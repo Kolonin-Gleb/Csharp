@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rubles_task", "3_Задачи на if else\rubles_task.csproj", "{5E3D445B-65D2-400F-9367-E75BBA42227A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chess_task", "chess_task\chess_task.csproj", "{3F3DC52D-29C2-4064-84D1-2D791BC6DDE5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E3D445B-65D2-400F-9367-E75BBA42227A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E3D445B-65D2-400F-9367-E75BBA42227A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E3D445B-65D2-400F-9367-E75BBA42227A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E3D445B-65D2-400F-9367-E75BBA42227A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F3DC52D-29C2-4064-84D1-2D791BC6DDE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F3DC52D-29C2-4064-84D1-2D791BC6DDE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F3DC52D-29C2-4064-84D1-2D791BC6DDE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F3DC52D-29C2-4064-84D1-2D791BC6DDE5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D44EE6A-2BC1-464E-952D-A176BEF718C8}
+	EndGlobalSection
+EndGlobal
