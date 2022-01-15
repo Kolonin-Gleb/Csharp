@@ -4,35 +4,29 @@ namespace Practice1
 {
     class Program
     {
-        // Поскольку все классы объявлены в пространстве имен DemoSplitFiles, то для использования
-        // имен этих классов не нужно указывать дополнительных уточнений или иных действий. 
         static void Main(string[] args)
         {
-            Console.WriteLine("zsdxfg");
-            //// 1. Использование экземпляра класса Human
-            //Human human = new Human("John", "Johnson", false);
-            //human.Print();
+            Console.Title = "Практическая работа 1";
 
-            //// 2. Использование экземпляра класса Citizen
-            //Citizen citizen = new Citizen("Petr", "Petrenko", false, "A101ksdl233", "New City");
-            //Console.WriteLine("------------------------");
-            //citizen.Print(); // вывести значение полей класса
+            Console.WriteLine("Использование экземпляра класса TransportationDevice");
+            TransportationDevice ts = new TransportationDevice("gasoline", "steering wheel", Convert.ToDateTime("02.02.2020"));
+            ts.Print();
+            Console.WriteLine("\n");
 
-            //// 3. Использование экземпляра класса ForeignCitizen
-            //ForeignCitizen foreignCitizen = new ForeignCitizen("Ivanov", "Ivan", false,
-            //    "0230902ADK", "London", "023329032JJK",
-            //    Convert.ToDateTime("02.02.2020"), Convert.ToDateTime("03.03.2085"));
-            //Console.WriteLine("------------------------");
-            //foreignCitizen.Print();
+            Console.WriteLine("Использование экземпляра класса Car");
+            Car car = new Car("electricity", "autopilot", Convert.ToDateTime("01.01.2022"), "B1", "Tesla");
+            car.Print();
+            Console.WriteLine("\n");
 
-                            // Моя программа
 
-            // Использование экземпляра класса Car
-
-            // Использование экземпляра класса Train
+            Console.WriteLine("Использование экземпляра класса Train");
+            Train trainTT = new Train("coal", "rods", Convert.ToDateTime("01.01.2000"), 400, 10);
+            trainTT.Print();
+            Console.WriteLine("\n");
 
             // Использование экземпляра класса Train со свойствами класса Express
 
+            Console.ReadKey();
         }
     }
 }
