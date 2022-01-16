@@ -18,13 +18,15 @@ namespace Practice1
             car.Print();
             Console.WriteLine("\n");
 
-
             Console.WriteLine("Использование экземпляра класса Train");
             Train trainTT = new Train("coal", "rods", Convert.ToDateTime("01.01.2000"), 400, 10);
             trainTT.Print();
             Console.WriteLine("\n");
 
-            // Использование экземпляра класса Train со свойствами класса Express
+            // Использование экземпляра класса Express
+            Express hogwartsExpress = new Express("oil", "autopilot", Convert.ToDateTime("01.01.2022"), 200, 5, "Станция 1, Станция 2, Станция 3");
+            hogwartsExpress.Print();
+            Console.WriteLine("\n");
 
             Console.ReadKey();
         }
