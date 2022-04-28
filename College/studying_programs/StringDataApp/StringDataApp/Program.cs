@@ -49,7 +49,7 @@ namespace StringDataApp
             ////TimeSpan - интервал времени, дни, часы, минуты, секунды, миллисекунды
             //TimeSpan date_curreent = new TimeSpan(100,0,0,0,0);
             //Console.WriteLine(date.Add(date_curreent));
-            //Console.WriteLine("Текущая дата и время:" + DateTime.Now);
+            Console.WriteLine("Текущая дата и время:" + DateTime.Now);
             //Console.WriteLine("К текущей дате прибавить 250 дней:" + DateTime.Now.AddDays(250));
             //Console.WriteLine("От текущей даты отнять 500 дней:" + DateTime.Now.AddDays(-500));
             //Console.WriteLine("К текущему времени прибавить 10 часов: " + DateTime.Now.AddHours(10).ToLongTimeString());
@@ -126,28 +126,30 @@ namespace StringDataApp
             ////Перевод текста в верхний регист метод ToUpper, в нижний ToLower
             //Console.WriteLine(StrSplit.ToUpper());
             //Console.WriteLine(StrSplit.ToLower());
-            int [,] DDMass;
-            int row, col;
-            Console.WriteLine("Введите количество строк");
-            row = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите количество столбцов");
-            col = Convert.ToInt32(Console.ReadLine());
-            DDMass = new int[row, col];
-            Random random = new Random();
-            for(int i = 0; i< row; i++)
-            {
-                for (int j = 0; j<col; j++)
-                {
-                    DDMass[i, j] = random.Next(1, 100);
-                    Console.Write(DDMass[i, j]+"\t");
-                }
-                Console.WriteLine();
-            }
-            Console.WriteLine("Введите номер номер ячейки, которую хотите вывести. Формат 0:0");
-            string cellNum = Console.ReadLine();
-            int celR = Convert.ToInt32(cellNum.Substring(0, cellNum.IndexOf(':')));
-            int celC = Convert.ToInt32(cellNum.Substring(cellNum.IndexOf(':') + 1, cellNum.Length - cellNum.IndexOf(':') - 1));
-            Console.WriteLine(DDMass[celR, celC]);
+
+
+            //int [,] DDMass;
+            //int row, col;
+            //Console.WriteLine("Введите количество строк");
+            //row = Convert.ToInt32(Console.ReadLine());
+            //Console.WriteLine("Введите количество столбцов");
+            //col = Convert.ToInt32(Console.ReadLine());
+            //DDMass = new int[row, col];
+            //Random random = new Random();
+            //for(int i = 0; i< row; i++)
+            //{
+            //    for (int j = 0; j<col; j++)
+            //    {
+            //        DDMass[i, j] = random.Next(1, 100);
+            //        Console.Write(DDMass[i, j]+"\t");
+            //    }
+            //    Console.WriteLine();
+            //}
+            //Console.WriteLine("Введите номер номер ячейки, которую хотите вывести. Формат 0:0");
+            //string cellNum = Console.ReadLine();
+            //int celR = Convert.ToInt32(cellNum.Substring(0, cellNum.IndexOf(':')));
+            //int celC = Convert.ToInt32(cellNum.Substring(cellNum.IndexOf(':') + 1, cellNum.Length - cellNum.IndexOf(':') - 1));
+            //Console.WriteLine(DDMass[celR, celC]);
             Console.ReadKey();
         }
     }
