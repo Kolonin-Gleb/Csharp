@@ -151,11 +151,42 @@ namespace StreamThreadApp
                     {
                         if (File.Exists(string.Format("C:\\{0}.txt", File_Name)))
                         {
-                            Console.WriteLine("Укажите ниже текст, который хотите сохранить в файле:");
-                            string New_Text = Console.ReadLine();
-                            StreamWriter streamWriter = new StreamWriter(string.Format("C:\\{0}.txt", File_Name));
-                            streamWriter.WriteLine(New_Text);
-                            streamWriter.Close();
+                            Console.WriteLine("Введите команду для исполнения:");
+                            Console.WriteLine("upper - для перевода всех букв в файле в верхний регистр");
+                            Console.WriteLine("lower - для перевода всех букв в файле в нижний регистр");
+                            Console.WriteLine("replace - для замены подстрок в текстовом документе");
+                            Console.WriteLine("search - для поиска подстроки в файле");
+                            Console.WriteLine("write - чтобы просто дописать информацию в файл");
+                            string comand = Console.ReadLine();
+
+                            if (comand == "upper")
+                            {
+                                
+                            }
+                            else if (comand == "lower")
+                            {
+
+                            }
+                            else if (comand == "replace")
+                            {
+
+                            }
+                            else if (comand == "search")
+                            {
+
+                            }
+                            else if (comand == "write")
+                            {
+                                Console.WriteLine("Укажите ниже текст, который хотите сохранить в файле:");
+                                string New_Text = Console.ReadLine();
+                                StreamWriter streamWriter = new StreamWriter(string.Format("C:\\{0}.txt", File_Name));
+                                streamWriter.WriteLine(New_Text);
+                                streamWriter.Close();
+                            }
+                            else
+                            {
+                                Console.WriteLine("Выбрана не существующая команда!");
+                            }
                         }
                         else
                         {
