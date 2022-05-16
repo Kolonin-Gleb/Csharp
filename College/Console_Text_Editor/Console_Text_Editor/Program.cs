@@ -7,15 +7,20 @@ using System.Threading.Tasks;
 using System.Threading; //Пространство имён для работы с многопоточностью
 using System.IO;
 
+using System.Text.RegularExpressions; // Для регулярных выражений
+
 namespace StreamThreadApp
 {
     class Program
     {
         static string File_Name = null; 
         static string File_Type = null;
+        static string File_Content;
 
         static void Main(string[] args)
         {
+            Console.Title = "Text Editor by Gleb";
+
             Console.WriteLine("Введите одну из команд: Create, Delete, Read, Write, Copy, Exit");
             string cmd = Console.ReadLine().ToLower();
             switch (cmd)
@@ -24,7 +29,7 @@ namespace StreamThreadApp
 
                     Console.WriteLine("Введите название нового файла или Enter, чтобы использовать текущую дату и время в качестве имени:");
                     File_Name = Console.ReadLine();
-                    if (File_Type == null)
+                    if (File_Name == null)
                     {
                         File_Name = DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss"); // Имя файла по умолчанию
                     }
@@ -86,46 +91,46 @@ namespace StreamThreadApp
                             StreamReader streamReader = new StreamReader(string.Format("C:\\{0}.txt", File_Name));
                             Console.Write(string.Format("{0}", streamReader.ReadToEnd()));
                             streamReader.Close();
-                            Console.SetCursorPosition(0, 3);
-                            string rewrite = Console.ReadLine();
-                            Console.WriteLine("Сохранить измнения в файле?");
-                            cmd = Console.ReadLine().ToLower();
-                            switch (cmd)
-                            {
-                                case "yes":
-                                    try
-                                    {
-                                        if (File.Exists(string.Format("C:\\{0}.txt", File_Name)))
-                                        {
-                                            StreamWriter streamWriter = new StreamWriter(string.Format("C:\\{0}.txt", File_Name));
-                                            streamWriter.WriteLine(rewrite);
-                                            streamWriter.Close();
-                                        }
-                                        else
-                                        {
-                                            Console.WriteLine("Указанного файла не существует!"); // Или его расширение не txt
-                                        }
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        Console.WriteLine(ex.Message);
-                                    }
-                                    finally
-                                    {
-                                        Console.WriteLine("Нажмите Enter");
-                                        Console.ReadKey();
-                                        Console.Clear();
-                                        Main(args);
-                                    }
-                                    break;
-                                case "no":
-                                default:
-                                    Console.WriteLine("Нажмите Enter");
-                                    Console.ReadKey();
-                                    Console.Clear();
-                                    Main(args);
-                                    break;
-                            }
+                            //Console.SetCursorPosition(0, 3);
+                            //string rewrite = Console.ReadLine();
+                            //Console.WriteLine("Сохранить измнения в файле?");
+                            //cmd = Console.ReadLine().ToLower();
+                            //switch (cmd)
+                            //{
+                            //    case "yes":
+                            //        try
+                            //        {
+                            //            if (File.Exists(string.Format("C:\\{0}.txt", File_Name)))
+                            //            {
+                            //                StreamWriter streamWriter = new StreamWriter(string.Format("C:\\{0}.txt", File_Name));
+                            //                streamWriter.WriteLine(rewrite);
+                            //                streamWriter.Close();
+                            //            }
+                            //            else
+                            //            {
+                            //                Console.WriteLine("Указанного файла не существует!"); // Или его расширение не txt
+                            //            }
+                            //        }
+                            //        catch (Exception ex)
+                            //        {
+                            //            Console.WriteLine(ex.Message);
+                            //        }
+                            //        finally
+                            //        {
+                            //            Console.WriteLine("Нажмите Enter");
+                            //            Console.ReadKey();
+                            //            Console.Clear();
+                            //            Main(args);
+                            //        }
+                            //        break;
+                            //    case "no":
+                            //    default:
+                            //        Console.WriteLine("Нажмите Enter");
+                            //        Console.ReadKey();
+                            //        Console.Clear();
+                            //        Main(args);
+                            //        break;
+                            //}
                         }
                         else
                         {
@@ -161,19 +166,43 @@ namespace StreamThreadApp
 
                             if (comand == "upper")
                             {
-                                
+                                File_Content = File.ReadAllText(string.Format("C:\\{0}.txt", File_Name));
+                                File_Content = File_Content.ToUpper();
+                                File.WriteAllText(string.Format("C:\\{0}.txt", File_Name), File_Content);
                             }
                             else if (comand == "lower")
                             {
-
+                                File_Content = File.ReadAllText(string.Format("C:\\{0}.txt", File_Name));
+                                File_Content = File_Content.ToLower();
+                                File.WriteAllText(string.Format("C:\\{0}.txt", File_Name), File_Content);
                             }
                             else if (comand == "replace")
                             {
+                                Console.WriteLine("Введите строку, для замены:");
+                                string searchText = Console.ReadLine();
+                                Console.WriteLine("Введите строку, которой заменяем:");
+                                string replaceText = Console.ReadLine();
 
+                                File_Content = File.ReadAllText(string.Format("C:\\{0}.txt", File_Name));
+
+                                File_Content = File_Content.Replace(searchText, replaceText);
+
+                                // Запись изменений в файл
+                                File.WriteAllText(string.Format("C:\\{0}.txt", File_Name), File_Content);
                             }
                             else if (comand == "search")
                             {
+                                Console.WriteLine("Введите строку, для поиска:");
+                                string searchText = Console.ReadLine();
 
+                                File_Content = File.ReadAllText(string.Format("C:\\{0}.txt", File_Name));
+
+                                Regex regexpattern = new Regex(searchText);
+
+                                File_Content = regexpattern.Match(File_Content).ToString();
+
+                                Console.WriteLine("Результат поиска: ");
+                                Console.WriteLine(File_Content);
                             }
                             else if (comand == "write")
                             {
@@ -243,29 +272,6 @@ namespace StreamThreadApp
                     Main(args);
                     break;
             }
-            //Thread threadTime = new Thread(getMassA);
-            //Thread threadDate = new Thread(getMassB);
-            //threadTime.Start();
-            //threadDate.Start();
-            //getMassA();
-            //getMassB();
-            //Console.ReadKey();
         }
-
-        //static private void getMassA()
-        //{
-        //    for (int i = 0; i < 20; i++)
-        //    {
-        //        Console.WriteLine(string.Format("Массив А, значение {0}", i));
-        //    }
-        //}
-
-        //static private void getMassB()
-        //{
-        //    for (int i = 0; i < 20; i++)
-        //    {
-        //        Console.WriteLine(string.Format("Массив Б, значение {0}", i));
-        //    }
-        //}
     }
 }
