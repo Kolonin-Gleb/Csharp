@@ -29,7 +29,7 @@ namespace StreamThreadApp
 
                     Console.WriteLine("Введите название нового файла или Enter, чтобы использовать текущую дату и время в качестве имени:");
                     File_Name = Console.ReadLine();
-                    if (File_Name == null)
+                    if (File_Name == "")
                     {
                         File_Name = DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss"); // Имя файла по умолчанию
                     }
@@ -91,46 +91,6 @@ namespace StreamThreadApp
                             StreamReader streamReader = new StreamReader(string.Format("C:\\{0}.txt", File_Name));
                             Console.Write(string.Format("{0}", streamReader.ReadToEnd()));
                             streamReader.Close();
-                            //Console.SetCursorPosition(0, 3);
-                            //string rewrite = Console.ReadLine();
-                            //Console.WriteLine("Сохранить измнения в файле?");
-                            //cmd = Console.ReadLine().ToLower();
-                            //switch (cmd)
-                            //{
-                            //    case "yes":
-                            //        try
-                            //        {
-                            //            if (File.Exists(string.Format("C:\\{0}.txt", File_Name)))
-                            //            {
-                            //                StreamWriter streamWriter = new StreamWriter(string.Format("C:\\{0}.txt", File_Name));
-                            //                streamWriter.WriteLine(rewrite);
-                            //                streamWriter.Close();
-                            //            }
-                            //            else
-                            //            {
-                            //                Console.WriteLine("Указанного файла не существует!"); // Или его расширение не txt
-                            //            }
-                            //        }
-                            //        catch (Exception ex)
-                            //        {
-                            //            Console.WriteLine(ex.Message);
-                            //        }
-                            //        finally
-                            //        {
-                            //            Console.WriteLine("Нажмите Enter");
-                            //            Console.ReadKey();
-                            //            Console.Clear();
-                            //            Main(args);
-                            //        }
-                            //        break;
-                            //    case "no":
-                            //    default:
-                            //        Console.WriteLine("Нажмите Enter");
-                            //        Console.ReadKey();
-                            //        Console.Clear();
-                            //        Main(args);
-                            //        break;
-                            //}
                         }
                         else
                         {
